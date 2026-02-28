@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="ST.Core/ST.Core.csproj" Id="674cb171-d4b1-48ea-a502-8f12347e8d92" />
+  <Project Path="ST.Persistence.Abstractions/ST.Persistence.Abstractions.csproj" />
+  <Project Path="ST.Persistence.EFCore/ST.Persistence.EFCore.csproj" />
+</Solution>
