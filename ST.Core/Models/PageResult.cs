@@ -118,12 +118,12 @@ namespace ST.Core.Models
                 {
                     return Count.Value >= PageIndex * PageSize;
                 }
-                if (Items.IsNullOrEmpty())
+                if (!Items.IsNullOrEmpty())
                 {
                     return Items.Count() == PageSize;
                 }
                 return false;
-                ;
+                
             }
         }
     }
