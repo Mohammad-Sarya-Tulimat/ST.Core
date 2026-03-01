@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ST.Core.Enums;
-using ST.Core.Models;
+using ST.Shared.Enums;
+using ST.Shared.Models;
 using ST.Persistence.Abstractions.Contracts;
-using ST.Core.Extensions;
+using ST.Shared.Extensions;
 using System.Linq.Expressions;
 namespace ST.Persistence.EFCore.Services
 {

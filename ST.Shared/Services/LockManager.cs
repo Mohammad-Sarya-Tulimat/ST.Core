@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ST.Core.Services
+namespace ST.Shared.Services
 {
     public class LockManager
     {

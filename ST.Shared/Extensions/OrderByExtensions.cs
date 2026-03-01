@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 
-namespace ST.Core.Extensions
+namespace ST.Shared.Extensions
 {
     public static class OrderByExtensions
     {

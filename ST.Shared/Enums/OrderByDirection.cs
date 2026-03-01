@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ST.Core.Enums
+namespace ST.Shared.Enums
 {
     public enum OrderByDirection
     {

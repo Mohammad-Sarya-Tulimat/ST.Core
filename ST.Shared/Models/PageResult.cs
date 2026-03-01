@@ -1,8 +1,8 @@
-﻿using ST.Core.Enums;
-using ST.Core.Extensions;
+﻿using ST.Shared.Enums;
+using ST.Shared.Extensions;
 using System.Collections.Generic;
 using System.Linq;
-namespace ST.Core.Models
+namespace ST.Shared.Models
 {
     public abstract class PageResult
     {

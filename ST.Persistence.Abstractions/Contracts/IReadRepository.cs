@@ -1,5 +1,5 @@
-﻿using ST.Core.Enums;
-using ST.Core.Models; 
+﻿using ST.Shared.Enums;
+using ST.Shared.Models; 
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;

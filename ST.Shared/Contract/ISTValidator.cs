@@ -1,10 +1,10 @@
-﻿using ST.Core.Models;
+﻿using ST.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
-namespace ST.Core.Contract
+namespace ST.Shared.Contract
 {
     public interface ISTValidator<T>
     {

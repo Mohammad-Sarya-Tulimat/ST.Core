@@ -3,7 +3,15 @@
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>enable</Nullable> 
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	  <PackageId>ST.Persistence.EFCore</PackageId>
+	  <Version>10.0.3</Version>
+	  <Authors>sarya tulimat</Authors>
+	  <Company>ST</Company>
+	  <Description>The implementation of ST.Persistence.Abstractions using EFcore.</Description>
+	  <PackageTags>utilities</PackageTags>
+	  <RepositoryUrl>https://github.com/Mohammad-Sarya-Tulimat/ST.Core</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

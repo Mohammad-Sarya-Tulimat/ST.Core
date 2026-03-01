@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace ST.Core.Models
+namespace ST.Shared.Models
 {
     public class ValidationResult
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace ST.Core.Contract
+namespace ST.Shared.Contract
 {
     public interface ISTMapper<TSource, TDestination> where TDestination : new()
     {
