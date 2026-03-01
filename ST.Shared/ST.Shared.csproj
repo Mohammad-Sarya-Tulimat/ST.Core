@@ -3,13 +3,15 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-	  <PackageId>ST.Shared</PackageId>
+	  <PackageId>STSY.Shared</PackageId>
 	  <Version>1.0.0</Version>
 	  <Authors>sarya tulimat</Authors>
 	  <Company>ST</Company>
 	  <PackageTags>utilities</PackageTags>
 	  <RepositoryUrl>https://github.com/Mohammad-Sarya-Tulimat/ST.Core</RepositoryUrl>
 	  <Description>shared library used on my projects.</Description>
+  
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
 	
