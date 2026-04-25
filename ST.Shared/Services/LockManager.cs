@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -6,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace ST.Shared.Services
 {
-    public class LockManager
+    public class LockManager : IDisposable
     {
-        List<SemaphoreSlim> SemaphoreSlim;
+        private readonly List<SemaphoreSlim> SemaphoreSlim;
         private int count;
-        public LockManager(int count)
+        private LockManager(int count)
         {
             this.count = count;
             SemaphoreSlim = new List<SemaphoreSlim>();
@@ -361,20 +362,23 @@ namespace ST.Shared.Services
 
 
         #region
-        private static Dictionary<string, LockManager> managers = new Dictionary<string, LockManager>(); 
+        private static ConcurrentDictionary<string, LockManager> managers = new ConcurrentDictionary<string, LockManager>();
         public static LockManager GetOrCreate(string name, int count)
         {
-            lock (managers)
-            {
-                if (managers.ContainsKey(name))
-                    return managers[name];
-                managers[name] = new LockManager(count);
-                return managers[name];
-            }
+            return managers.GetOrAdd(name, (n) => new LockManager(count));
         }
         public static LockManager GetOrCreate(string name)
         {
             return GetOrCreate(name, 1);
+        }
+
+        public void Dispose()
+        {
+            if (SemaphoreSlim == null) return;
+            foreach (var item in SemaphoreSlim)
+            {
+                item.Dispose();
+            }
         }
         #endregion
     }

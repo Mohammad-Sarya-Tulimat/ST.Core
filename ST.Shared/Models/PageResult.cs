@@ -32,7 +32,7 @@ namespace ST.Shared.Models
             {
                 query = query.OrderByDescending(orderBy);
             }
-            var result = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
             return new PageResult<T>()
             {
                 Count = count,
@@ -45,7 +45,7 @@ namespace ST.Shared.Models
         {
             var take = (pageIndex + additionalPagesToCount) * pageSize;
             var count = query.Take(take).LongCount();
-            var result = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
             return new PageResult<T>()
             {
                 Count = count,
@@ -66,7 +66,7 @@ namespace ST.Shared.Models
             {
                 query = query.OrderByDescending(orderBy);
             }
-            var result = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
             return new PageResult<T>()
             {
                 Count = count,
@@ -77,10 +77,10 @@ namespace ST.Shared.Models
         }
 
         public static PageResult<T> BuildScrollingPage<T>(IQueryable<T> query, int pageIndex, int pageSize)
-        { 
-            var result = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+        {
+            query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
             return new PageResult<T>()
-            { 
+            {
                 Items = query.ToList(),
                 PageIndex = pageIndex,
                 PageSize = pageSize
@@ -88,7 +88,7 @@ namespace ST.Shared.Models
         }
 
         public static PageResult<T> BuildScrollingPage<T>(IQueryable<T> query, int pageIndex, int pageSize, string orderBy, OrderByDirection orderByDirection)
-        { 
+        {
             if (orderByDirection == OrderByDirection.Ascending)
             {
                 query = query.OrderBy(orderBy);
@@ -97,9 +97,9 @@ namespace ST.Shared.Models
             {
                 query = query.OrderByDescending(orderBy);
             }
-            var result = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
             return new PageResult<T>()
-            { 
+            {
                 Items = query.ToList(),
                 PageIndex = pageIndex,
                 PageSize = pageSize
@@ -123,7 +123,7 @@ namespace ST.Shared.Models
                     return Items.Count() == PageSize;
                 }
                 return false;
-                
+
             }
         }
     }

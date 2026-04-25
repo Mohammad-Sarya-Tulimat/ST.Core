@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ST.Shared.Enums;
-using ST.Shared.Models;
 using ST.Persistence.Abstractions.Contracts;
+using ST.Shared.Enums;
 using ST.Shared.Extensions;
+using ST.Shared.Models;
 using System.Linq.Expressions;
 namespace ST.Persistence.EFCore.Services
 {
@@ -112,7 +112,7 @@ namespace ST.Persistence.EFCore.Services
         public Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
         {
             return this.GetIQueryable(predicate).AnyAsync(cancellationToken);
-        } 
+        }
 
         #region FirstOrDefaultAsync
         public async Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
@@ -307,7 +307,7 @@ namespace ST.Persistence.EFCore.Services
         public async Task<PageResult<TEntity>> GetPageWithFullCountAsync(IEnumerable<Expression<Func<TEntity, bool>>> predicate, int pageIndex, int pageSize, string orderBy, OrderByDirection orderByDirection, CancellationToken cancellationToken = default)
         {
             var query = this.GetIQueryable(predicate);
-            return await this.BuildPageWithFullCountAsync(query, pageIndex, pageSize,orderBy,orderByDirection, cancellationToken);
+            return await this.BuildPageWithFullCountAsync(query, pageIndex, pageSize, orderBy, orderByDirection, cancellationToken);
         }
 
         public async Task<PageResult<TResult>> GetPageWithFullCountAsync<TResult>(Expression<Func<TEntity, TResult>> mapExpression, IEnumerable<Expression<Func<TEntity, bool>>> predicate, int pageIndex, int pageSize, CancellationToken cancellationToken = default)
@@ -377,42 +377,42 @@ namespace ST.Persistence.EFCore.Services
         public PageResult<TEntity> GetPageWithPartialCount(IEnumerable<Expression<Func<TEntity, bool>>> predicate, int pageIndex, int pageSize, int additionalPagesToCount)
         {
             var query = this.GetIQueryable(predicate);
-            return PageResult.BuildWithPartialCount(query, pageIndex, pageSize,additionalPagesToCount);
+            return PageResult.BuildWithPartialCount(query, pageIndex, pageSize, additionalPagesToCount);
         }
 
         public PageResult<TEntity> GetPageWithPartialCount(IEnumerable<Expression<Func<TEntity, bool>>> predicate, int pageIndex, int pageSize, int additionalPagesToCount, string orderBy, OrderByDirection orderByDirection)
         {
             var query = this.GetIQueryable(predicate);
-            return PageResult.BuildWithPartialCount(query, pageIndex, pageSize, additionalPagesToCount,orderBy,orderByDirection);
+            return PageResult.BuildWithPartialCount(query, pageIndex, pageSize, additionalPagesToCount, orderBy, orderByDirection);
         }
         public PageResult<TResult> GetPageWithPartialCount<TResult>(Expression<Func<TEntity, TResult>> mapExpression, IEnumerable<Expression<Func<TEntity, bool>>> predicate, int pageIndex, int pageSize, int additionalPagesToCount)
-        { 
+        {
             var query = this.GetIQueryable(predicate).Select(mapExpression);
             return PageResult.BuildWithPartialCount(query, pageIndex, pageSize, additionalPagesToCount);
         }
 
         public PageResult<TResult> GetPageWithPartialCount<TResult>(Expression<Func<TEntity, TResult>> mapExpression, IEnumerable<Expression<Func<TEntity, bool>>> predicate, int pageIndex, int pageSize, int additionalPagesToCount, string orderBy, OrderByDirection orderByDirection)
-        { 
+        {
             var query = this.GetIQueryable(predicate).Select(mapExpression);
             return PageResult.BuildWithPartialCount(query, pageIndex, pageSize, additionalPagesToCount, orderBy, orderByDirection);
-        } 
+        }
         public async Task<PageResult<TEntity>> GetPageWithPartialCountAsync(IEnumerable<Expression<Func<TEntity, bool>>> predicate, int pageIndex, int pageSize, int additionalPagesToCount, CancellationToken cancellationToken = default)
         {
             var query = this.GetIQueryable(predicate);
-            return await this.BuildPageWithPartialCountAsync(query, pageIndex, pageSize, additionalPagesToCount,cancellationToken);
+            return await this.BuildPageWithPartialCountAsync(query, pageIndex, pageSize, additionalPagesToCount, cancellationToken);
         }
 
         public async Task<PageResult<TEntity>> GetPageWithPartialCountAsync(IEnumerable<Expression<Func<TEntity, bool>>> predicate, int pageIndex, int pageSize, int additionalPagesToCount, string orderBy, OrderByDirection orderByDirection, CancellationToken cancellationToken = default)
         {
             var query = this.GetIQueryable(predicate);
-            return await this.BuildPageWithPartialCountAsync(query, pageIndex, pageSize, additionalPagesToCount,orderBy,orderByDirection, cancellationToken);
-        } 
+            return await this.BuildPageWithPartialCountAsync(query, pageIndex, pageSize, additionalPagesToCount, orderBy, orderByDirection, cancellationToken);
+        }
 
         public async Task<PageResult<TResult>> GetPageWithPartialCountAsync<TResult>(Expression<Func<TEntity, TResult>> mapExpression, IEnumerable<Expression<Func<TEntity, bool>>> predicate, int pageIndex, int pageSize, int additionalPagesToCount, CancellationToken cancellationToken = default)
         {
             var query = this.GetIQueryable(predicate).Select(mapExpression);
             return await this.BuildPageWithPartialCountAsync(query, pageIndex, pageSize, additionalPagesToCount, cancellationToken);
-        } 
+        }
         public async Task<PageResult<TResult>> GetPageWithPartialCountAsync<TResult>(Expression<Func<TEntity, TResult>> mapExpression, IEnumerable<Expression<Func<TEntity, bool>>> predicate, int pageIndex, int pageSize, int additionalPagesToCount, string orderBy, OrderByDirection orderByDirection, CancellationToken cancellationToken = default)
         {
             var query = this.GetIQueryable(predicate).Select(mapExpression);
@@ -442,12 +442,12 @@ namespace ST.Persistence.EFCore.Services
         public PageResult<TEntity> GetScrollingPage(IEnumerable<Expression<Func<TEntity, bool>>> predicate, int pageIndex, int pageSize, string orderBy, OrderByDirection orderByDirection)
         {
             var query = this.GetIQueryable(predicate);
-            return PageResult.BuildScrollingPage(query, pageIndex, pageSize, orderBy, orderByDirection); 
+            return PageResult.BuildScrollingPage(query, pageIndex, pageSize, orderBy, orderByDirection);
         }
 
         public async Task<PageResult<TEntity>> GetScrollingPageAsync(Expression<Func<TEntity, bool>> predicate, int pageIndex, int pageSize, CancellationToken cancellationToken = default)
         {
-            var query = this.GetIQueryable(predicate);  
+            var query = this.GetIQueryable(predicate);
             return await this.BuildScrollingPage(query, pageIndex, pageSize, cancellationToken);
         }
 
@@ -547,7 +547,7 @@ namespace ST.Persistence.EFCore.Services
         protected async Task<PageResult<T>> BuildPageWithFullCountAsync<T>(IQueryable<T> query, int pageIndex, int pageSize, CancellationToken cancellationToken = default)
         {
             var count = await query.LongCountAsync(cancellationToken);
-            var result = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
             return new PageResult<T>()
             {
                 Count = count,
@@ -567,7 +567,7 @@ namespace ST.Persistence.EFCore.Services
             {
                 query = query.OrderByDescending(orderBy);
             }
-            var result = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
             return new PageResult<T>()
             {
                 Count = count,
@@ -581,7 +581,7 @@ namespace ST.Persistence.EFCore.Services
         {
             var take = (pageIndex + additionalPagesToCount) * pageSize;
             var count = await query.Take(take).LongCountAsync(cancellationToken);
-            var result = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
             return new PageResult<T>()
             {
                 Count = count,
@@ -602,7 +602,7 @@ namespace ST.Persistence.EFCore.Services
             {
                 query = query.OrderByDescending(orderBy);
             }
-            var result = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
             return new PageResult<T>()
             {
                 Count = count,
@@ -613,9 +613,9 @@ namespace ST.Persistence.EFCore.Services
         }
 
 
-        protected async Task<PageResult<T>> BuildScrollingPage<T>(IQueryable<T> query, int pageIndex, int pageSize,CancellationToken cancellationToken = default)
+        protected async Task<PageResult<T>> BuildScrollingPage<T>(IQueryable<T> query, int pageIndex, int pageSize, CancellationToken cancellationToken = default)
         {
-            var result = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
             return new PageResult<T>()
             {
                 Items = await query.ToListAsync(cancellationToken),
@@ -633,7 +633,7 @@ namespace ST.Persistence.EFCore.Services
             {
                 query = query.OrderByDescending(orderBy);
             }
-            var result = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
             return new PageResult<T>()
             {
                 Items = await query.ToListAsync(cancellationToken),

@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable> 
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	  <PackageId>STSY.Persistence.EFCore</PackageId>
-	  <Version>10.0.3</Version>
+	  <Version>10.0.3.1</Version>
 	  <Authors>sarya tulimat</Authors>
 	  <Company>ST</Company>
 	  <Description>The implementation of ST.Persistence.Abstractions using EFcore.</Description>
